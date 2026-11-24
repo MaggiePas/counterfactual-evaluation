@@ -9,20 +9,22 @@
 <meta property="og:description" content="2,347 PE and 2,601 ICH counterfactual CTs across 300 patients, used to map the operating limits of four detectors.">
 <link rel="icon" href="data:,">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Source+Sans+3:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600;8..60,700&display=swap" rel="stylesheet">
 <style>
   :root{
     --ink:#1b1f23; --muted:#5b6670; --line:#e4e7ea; --soft:#f5f6f7; --bg:#ffffff;
-    --pe:#1F6F6F; --pe2:#4FA3A3; --ich:#7B2C20; --ich2:#E07B6B; --accent:#1F6F6F;
+    --pe:#1F6F6F; --pe2:#4FA3A3; --ich:#7B2C20; --ich2:#E07B6B; --accent:#8C1515; --accent-light:#B83A4B;
+    --cardinal-tint:#f7ecee; --serif:"Source Serif 4",Georgia,"Times New Roman",serif;
   }
   *{box-sizing:border-box}
   html{scroll-behavior:smooth}
-  body{margin:0;background:var(--bg);color:var(--ink);font:16.5px/1.6 Inter,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+  body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.6 "Source Sans 3",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
   a{color:var(--accent)}
   .wrap,.wide{max-width:900px;margin:0 auto;padding:0 20px}   /* figures share the text line width */
   /* hero */
-  header{padding:54px 0 26px;text-align:center}
-  h1{font-size:clamp(28px,4.2vw,42px);line-height:1.18;letter-spacing:-.4px;margin:0 auto 22px;max-width:880px}
+  header{padding:54px 0 34px;text-align:center;border-top:5px solid var(--accent);
+         background:linear-gradient(180deg,var(--cardinal-tint) 0%,#fbf6f7 45%,#ffffff 100%)}
+  h1{font-family:var(--serif);font-weight:700;font-size:clamp(29px,4.4vw,44px);line-height:1.16;letter-spacing:-.3px;margin:0 auto 22px;max-width:880px}
   .authors{font-size:15.5px;color:var(--ink);max-width:860px;margin:0 auto}
   .authors span{white-space:nowrap}
   .authors a{color:var(--ink);text-decoration:none;border-bottom:1px solid #c9d1d6}
@@ -33,11 +35,12 @@
        text-decoration:none;font-size:15px;font-weight:500;border:1px solid var(--ink)}
   .btn svg{width:17px;height:17px}
   .btn.primary{background:var(--accent);border-color:var(--accent)}
-  .btn.primary:hover{filter:brightness(1.12)}
+  .btn.primary:hover{background:var(--accent-light);border-color:var(--accent-light)}
+  .btn:not(.soon):not(.primary):hover{background:#000}
   .btn.soon{background:#fff;color:var(--muted);border-color:var(--line);cursor:default}
   .btn.soon small{font-size:11.5px;background:var(--soft);border-radius:6px;padding:1px 6px}
   /* teaser */
-  .teaser{background:#000;border-radius:16px;overflow:hidden;margin:30px auto 0}
+  .teaser{background:#000;border-radius:16px;overflow:hidden;margin:30px auto 0;box-shadow:0 14px 40px rgba(60,10,15,.18)}
   .teaser video{display:block;width:100%;height:auto}
   /* titles + lesion labels are page text (same font), laid out over the video's two panels */
   .tz-row{display:grid;grid-template-columns:1fr 1fr;column-gap:1.75%;padding:0 1.28%;color:#e7edf0;text-align:center}
@@ -49,7 +52,9 @@
   /* sections */
   section{padding:46px 0 10px}
   section:last-of-type{padding-bottom:60px}
-  h2{font-size:26px;letter-spacing:-.2px;margin:0 0 14px;text-align:center}
+  h2{font-family:var(--serif);font-weight:600;font-size:28px;letter-spacing:-.2px;margin:0 0 14px;text-align:center}
+  h2::after{content:"";display:block;width:44px;height:3px;background:var(--accent);border-radius:2px;margin:10px auto 0}
+  .demo h2::after{margin-left:0}
   .demo h2{text-align:left}            /* the demo call-out keeps its title beside its text */
   h3{font-size:18px;margin:26px 0 8px}
   p{margin:0 0 14px}
@@ -88,12 +93,33 @@
   .tabs{display:flex;gap:6px;margin:18px 0 10px}
   .tab{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;font:inherit;font-size:14px;cursor:pointer;color:var(--muted)}
   .tab.on{background:var(--ink);border-color:var(--ink);color:#fff}
+  /* in brief */
+  .brief{list-style:none;padding:0;margin:8px 0 0;display:grid;gap:12px}
+  .brief li{background:var(--soft);border-left:4px solid var(--accent);border-radius:10px;padding:12px 16px;font-size:16.5px}
+  .brief b{color:var(--accent);font-weight:700}
+  /* key findings */
+  .findings{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:8px 0 0}
+  .card{background:#fff;border:1px solid var(--line);border-top:4px solid var(--accent);border-radius:14px;padding:16px 16px 14px;
+        box-shadow:0 4px 14px rgba(0,0,0,.04)}
+  .card svg{width:28px;height:28px;color:var(--accent)}
+  .card .num{font-family:var(--serif);font-weight:700;font-size:27px;line-height:1.15;color:var(--accent);margin:8px 0 6px}
+  .card p{font-size:14.5px;line-height:1.45;color:var(--muted);margin:0}
+  /* footer */
+  footer{background:#2E2D29;color:#d9d7d2;padding:34px 0 40px;margin-top:20px;font-size:14px}
+  footer a{color:#fff}
+  footer h3{color:#fff;font-size:15px;margin:0 0 8px}
+  footer .cols{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+  .bib{position:relative}
+  .copy{position:absolute;top:8px;right:8px;border:1px solid var(--line);background:#fff;border-radius:8px;padding:4px 10px;
+        font:inherit;font-size:13px;cursor:pointer;color:var(--muted)}
+  .copy:hover{color:var(--accent);border-color:var(--accent)}
   /* demo call-out */
   .demo{display:grid;grid-template-columns:1.05fr 1fr;gap:26px;align-items:center;background:var(--soft);border-radius:18px;padding:24px}
   .demo img{width:100%;border-radius:10px;border:1px solid var(--line);display:block}
   pre{background:var(--soft);border-radius:10px;padding:14px 16px;overflow-x:auto;font-size:13px;line-height:1.5}
   @media (max-width:820px){
-    .grid2,.grid3,.demo{grid-template-columns:1fr}
+    .grid2,.grid3,.demo,footer .cols{grid-template-columns:1fr}
+    .findings{grid-template-columns:1fr 1fr}
     .align-bottom figure{display:block;margin:0 0 14px}
     .align-bottom figure img,.align-bottom figure figcaption{grid-row:auto}
     .pair-eq{flex-direction:column;align-items:stretch}
@@ -139,19 +165,30 @@
 </div></header>
 
 <section id="abstract"><div class="wrap">
-  <h2>Abstract</h2>
-  <p>Clinical AI is largely evaluated on retrospective data, which may not capture sufficient clinical and anatomical
-  variability. Synthetic imaging could address this limitation but requires clinical fidelity and precise control. We
-  developed a counterfactual computed tomography (CT) framework using two 3D diffusion models trained on 12,367 CT
-  pulmonary angiograms for pulmonary embolism (PE) and 8,444 head CTs for intracranial hemorrhage (ICH). Each
-  counterfactual kept the anatomy of a real patient and added a lesion. We generated 2,347 PE and 2,601 ICH
-  counterfactuals across 300 patients. Radiologist review confirmed their realism and anatomical consistency.
-  Stress-testing two detectors per disease exposed operating limits not revealed by aggregate metrics: overall
-  sensitivity was 62-67% (PE) and 59-72% (ICH) but decreased to 42-48% for PE under 0.5 mL and 30-56% for ICH under
-  5 mL. Detection also varied with hemorrhage subtype and, in one PE detector, the presence of pleural effusion. The
-  volume-dependent sensitivity computed on counterfactuals transferred to four external real-world datasets.
-  Counterfactuals can reveal clinically relevant features that influence model performance. We open-source our code,
-  models, and synthetic cohorts.</p>
+  <h2>In brief</h2>
+  <ul class="brief">
+    <li><b>What we did.</b> We built a counterfactual CT framework: two 3D diffusion models that keep the anatomy of a
+    real patient and add a lesion with chosen properties. We generated 2,347 pulmonary embolism (PE) and 2,601
+    intracranial hemorrhage (ICH) counterfactuals across 300 patients. Radiologist review confirmed their realism
+    and anatomical consistency.</li>
+    <li><b>Why it matters.</b> Clinical AI is largely evaluated on retrospective data, which may not capture
+    sufficient clinical and anatomical variability. A counterfactual changes one lesion property while the rest of
+    the patient stays fixed, so changes in model performance can be attributed to that property.</li>
+    <li><b>Impact.</b> Stress-testing two detectors per disease exposed operating limits not revealed by aggregate
+    metrics: overall sensitivity was 62-67% (PE) and 59-72% (ICH) but decreased to 42-48% for PE under 0.5 mL and
+    30-56% for ICH under 5 mL. The volume-dependent sensitivity computed on counterfactuals transferred to four
+    external real-world datasets. We open-source our code, models, and synthetic cohorts.</li>
+  </ul>
+</div></section>
+
+<section id="findings"><div class="wide">
+  <h2>Key findings</h2>
+  <div class="findings">
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="7"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3"/></svg><div class="num">1.3 / 1.4 mL</div><p>Embolus volume above which cumulative PE sensitivity reached 90% (PE-Detector-1 / PE-Detector-2).</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c4.4 0 8 3.4 8 7.6 0 3-1.8 5.6-4.5 6.8V21h-7v-3.6C5.8 16.2 4 13.6 4 10.6 4 6.4 7.6 3 12 3z"/><path d="M9 10h6M12 7v6"/></svg><div class="num">45% → 78%</div><p>ICH-Detector-1 sensitivity from intraparenchymal to intraventricular hemorrhage.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3s6 6.4 6 11a6 6 0 0 1-12 0c0-4.6 6-11 6-11z"/></svg><div class="num">OR 0.50</div><p>Pleural effusion lowered detection for PE-Detector-2 (95% CI 0.36–0.69) but not for PE-Detector-1.</p></div>
+    <div class="card"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l3-7 4 14 3-7h4"/></svg><div class="num">4 real datasets</div><p>Real-scan detection met or exceeded the synthetic estimates, so the synthetic limits were conservative.</p></div>
+  </div>
 </div></section>
 
 <section id="method"><div class="wrap">
@@ -336,8 +373,43 @@
 
 <section id="citation"><div class="wrap">
   <h2>Citation</h2>
-  <p>The BibTeX entry will be added soon.</p>
+  <p>Preliminary entry; the journal and link will be added on publication.</p>
+  <div class="bib"><button class="copy" type="button" id="copy-bib">Copy</button><pre id="bibtex">@article{paschali2026counterfactual,
+  title  = {Stress-testing clinical {AI} with anatomically constrained counterfactual {CT}},
+  author = {Paschali, Magdalini and
+            Sun, Susu and
+            Moroianu, Stefania and
+            Na, Hye Sun and
+            Liu, Jiaming and
+            Fang, Zhongnan and
+            Gonzalez, Camila and
+            Durak, Gorkem and
+            Taktak, Yavuz B. and
+            Ikizgul, Oyku and
+            Ji, William and
+            Langlotz, Curtis P. and
+            Bluethgen, Christian and
+            Baumgartner, Christian and
+            Bagci, Ulas and
+            Larson, David B. and
+            Chaudhari, Akshay S.},
+  year   = {2026}
+}</pre></div>
 </div></section>
+
+<footer><div class="wrap"><div class="cols">
+  <div>
+    <h3>Research groups</h3>
+    <p><a href="https://aide.stanford.edu">Stanford AIDE Lab</a><br>
+    <a href="https://med.stanford.edu/mimi.html">Stanford MIMI Group</a><br>
+    <a href="https://aimi.stanford.edu/">Stanford AIMI Center</a></p>
+  </div>
+  <div>
+    <h3>Links</h3>
+    <p><a href="https://github.com/stanfordaide/counterfactual_evaluation">Code (GitHub)</a><br>
+    <a href="https://magdapaschali.com/counterfactual-ct-demo/">Interactive demo</a></p>
+  </div>
+</div></div></footer>
 
 
 <div class="lightbox" id="lightbox" role="dialog" aria-label="Enlarged figure"><img alt=""></div>
@@ -357,6 +429,11 @@
       requestAnimationFrame(frame);
     })();
   })();
+  // copy the BibTeX entry
+  document.getElementById("copy-bib").addEventListener("click", e => {
+    navigator.clipboard.writeText(document.getElementById("bibtex").textContent)
+      .then(() => { e.target.textContent = "Copied"; setTimeout(() => e.target.textContent = "Copy", 1500); });
+  });
   // click a figure to see it at full size; click or Esc to close
   const lb=document.getElementById("lightbox"), lbImg=lb.querySelector("img");
   document.querySelectorAll("figure img").forEach(im=>im.addEventListener("click",()=>{ lbImg.src=im.src; lbImg.alt=im.alt; lb.classList.add("on"); }));

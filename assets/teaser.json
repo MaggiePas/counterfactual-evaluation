@@ -1,0 +1,19 @@
+{
+ "fps": 30,
+ "hold": 54,
+ "fade": 18,
+ "margin_frac": 0.01276595744680851,
+ "gap_frac": 0.01702127659574468,
+ "pe": [
+  "Lobar embolus \u00b7 15.0 mL",
+  "Central embolus \u00b7 9.4 mL",
+  "Lobar embolus \u00b7 6.2 mL",
+  "Lobar embolus \u00b7 3.9 mL"
+ ],
+ "ich": [
+  "Intraparenchymal \u00b7 50.3 mL",
+  "Mixed: SAH + IPH + IVH \u00b7 43.6 mL",
+  "Intraventricular \u00b7 29.6 mL",
+  "Subarachnoid \u00b7 10.9 mL"
+ ]
+}
